@@ -16,7 +16,7 @@ public class CharacterControler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        moveInput = new Vector2(Input.GetAxisRaw("1_Horizontal"), Input.GetAxisRaw("1_Vertical"));
         moveVelocity = moveInput * moveSpeed;
 	}
 
