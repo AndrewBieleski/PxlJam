@@ -4,6 +4,7 @@ using TeamUtility.IO;
 
 public class CharacterControler : MonoBehaviour {
 
+    [SerializeField]
     private PlayerID player;
 
     public float moveSpeed;
@@ -11,6 +12,8 @@ public class CharacterControler : MonoBehaviour {
 
     private Vector2 moveInput;
     private Vector2 moveVelocity;
+
+    private Vector2 orientInput;
 
     public Transform rangedAttack;
     public float reloadTime;
@@ -24,12 +27,21 @@ public class CharacterControler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
      //Movement:
+
+        float deadzone = 0.25f;
+
+        //Movement:
         moveInput = new Vector2(InputManager.GetAxisRaw("Left Stick Horizontal", player), InputManager.GetAxisRaw("Left Stick Vertical", player));
+        if (moveInput.magnitude < deadzone)
+            moveInput = Vector2.zero;
         moveVelocity = moveInput * moveSpeed;
 
         //Orientation:
-        Debug.Log(InputManager.GetAxis("Right Stick Vertical", player) + " " + InputManager.GetAxis("Right Stick Horizontal", player));
-        transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(InputManager.GetAxis("Right Stick Vertical", player), InputManager.GetAxis("Right Stick Horizontal", player)) * 180 / Mathf.PI);
+        Vector2 newOrientInput = new Vector2(InputManager.GetAxisRaw("Right Stick Horizontal", player), InputManager.GetAxisRaw("Right Stick Vertical", player));
+        if (newOrientInput.magnitude > deadzone)
+            orientInput = newOrientInput;
+        Debug.Log(orientInput.x + " " + orientInput.y);
+        transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(orientInput.y, orientInput.x) * 180 / Mathf.PI);
 
         Shooting();
 
