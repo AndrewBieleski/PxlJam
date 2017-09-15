@@ -38,7 +38,6 @@ public class CharacterControler : MonoBehaviour {
         Vector2 newOrientInput = new Vector2(InputManager.GetAxisRaw("Right Stick Horizontal", player), InputManager.GetAxisRaw("Right Stick Vertical", player));
         if (newOrientInput.magnitude > deadzone)
             orientInput = newOrientInput;
-        Debug.Log(orientInput.x + " " + orientInput.y);
         transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(orientInput.y, orientInput.x) * 180 / Mathf.PI);
     }
 
