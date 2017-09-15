@@ -17,6 +17,7 @@ public class CharacterControler : MonoBehaviour {
 
     public Transform rangedAttack;
     public float reloadTime;
+    public bool fireTrigger;
 
     // Use this for initialization
     void Start () {
@@ -25,6 +26,7 @@ public class CharacterControler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+     //Movement:
 
         float deadzone = 0.25f;
 
@@ -39,6 +41,22 @@ public class CharacterControler : MonoBehaviour {
         if (newOrientInput.magnitude > deadzone)
             orientInput = newOrientInput;
         transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(orientInput.y, orientInput.x) * 180 / Mathf.PI);
+
+        Shooting();
+
+    }
+
+    void Shooting ()
+    {
+    
+        fireTrigger = InputManager.GetButtonDown("Right Trigger", player);
+        if (fireTrigger)
+        {
+
+            Instantiate(rangedAttack, transform.position, rangedAttack.rotation);
+
+        }
+
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
