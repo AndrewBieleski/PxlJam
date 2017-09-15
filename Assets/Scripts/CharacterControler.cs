@@ -24,15 +24,9 @@ public class CharacterControler : MonoBehaviour {
         moveInput = new Vector2(InputManager.GetAxisRaw("Left Stick Horizontal", PlayerID.One), InputManager.GetAxisRaw("Left Stick Vertical", PlayerID.One));
         moveVelocity = moveInput * moveSpeed;
 
-     //Orientation:
-        //Get the Screen positions of the object
-        Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
-        //Get the Screen position of the mouse
-        Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        //Get the angle between the points
-        float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
-        //Ta Daaa
-        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        //Orientation:
+        Debug.Log(InputManager.GetAxis("Right Stick Vertical", PlayerID.One) + " " + InputManager.GetAxis("Right Stick Horizontal", PlayerID.One));
+        transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(InputManager.GetAxis("Right Stick Vertical", PlayerID.One), InputManager.GetAxis("Right Stick Horizontal", PlayerID.One)) * 180 / Mathf.PI);
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
