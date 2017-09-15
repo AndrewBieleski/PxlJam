@@ -2057,7 +2057,6 @@ GameObject:
   - component: {fileID: 1448089923}
   - component: {fileID: 1448089922}
   - component: {fileID: 1448089921}
-  - component: {fileID: 1448089919}
   - component: {fileID: 1448089920}
   - component: {fileID: 1448089918}
   m_Layer: 0
@@ -2082,18 +2081,6 @@ MonoBehaviour:
   moveSpeed: 10
   rangedAttack: {fileID: 0}
   reloadTime: 0
---- !u!114 &1448089919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114101875309934386, guid: 87a5f11ee3a760946ba0e1ccdde8332a,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1448089917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac1354e93155e7440a31a61e8f32b66d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &1448089920
 Rigidbody2D:
   serializedVersion: 4

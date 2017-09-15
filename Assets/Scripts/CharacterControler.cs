@@ -14,6 +14,7 @@ public class CharacterControler : MonoBehaviour {
 
     public Transform rangedAttack;
     public float reloadTime;
+    public bool fireTrigger;
 
     // Use this for initialization
     void Start () {
@@ -29,6 +30,22 @@ public class CharacterControler : MonoBehaviour {
         //Orientation:
         Debug.Log(InputManager.GetAxis("Right Stick Vertical", player) + " " + InputManager.GetAxis("Right Stick Horizontal", player));
         transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(InputManager.GetAxis("Right Stick Vertical", player), InputManager.GetAxis("Right Stick Horizontal", player)) * 180 / Mathf.PI);
+
+        Shooting();
+
+    }
+
+    void Shooting ()
+    {
+    
+        fireTrigger = InputManager.GetButtonDown("Right Trigger", player);
+        if (fireTrigger)
+        {
+
+            Instantiate(rangedAttack, transform.position, rangedAttack.rotation);
+
+        }
+
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
