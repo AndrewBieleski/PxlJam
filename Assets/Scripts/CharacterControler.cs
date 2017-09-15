@@ -4,6 +4,8 @@ using TeamUtility.IO;
 
 public class CharacterControler : MonoBehaviour {
 
+    private PlayerID player;
+
     public float moveSpeed;
     private Rigidbody2D thisRigidBody;
 
@@ -21,12 +23,12 @@ public class CharacterControler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
      //Movement:
-        moveInput = new Vector2(InputManager.GetAxisRaw("Left Stick Horizontal", PlayerID.One), InputManager.GetAxisRaw("Left Stick Vertical", PlayerID.One));
+        moveInput = new Vector2(InputManager.GetAxisRaw("Left Stick Horizontal", player), InputManager.GetAxisRaw("Left Stick Vertical", player));
         moveVelocity = moveInput * moveSpeed;
 
         //Orientation:
-        Debug.Log(InputManager.GetAxis("Right Stick Vertical", PlayerID.One) + " " + InputManager.GetAxis("Right Stick Horizontal", PlayerID.One));
-        transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(InputManager.GetAxis("Right Stick Vertical", PlayerID.One), InputManager.GetAxis("Right Stick Horizontal", PlayerID.One)) * 180 / Mathf.PI);
+        Debug.Log(InputManager.GetAxis("Right Stick Vertical", player) + " " + InputManager.GetAxis("Right Stick Horizontal", player));
+        transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(InputManager.GetAxis("Right Stick Vertical", player), InputManager.GetAxis("Right Stick Horizontal", player)) * 180 / Mathf.PI);
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
