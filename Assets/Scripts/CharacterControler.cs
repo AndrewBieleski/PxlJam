@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using TeamUtility.IO;
 
 public class CharacterControler : MonoBehaviour {
 
@@ -16,7 +17,7 @@ public class CharacterControler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        moveInput = new Vector2(Input.GetAxisRaw("1_Horizontal"), Input.GetAxisRaw("1_Vertical"));
+        moveInput = new Vector2(InputManager.GetAxisRaw("Left Stick Horizontal", PlayerID.One), InputManager.GetAxisRaw("Left Stick Vertical", PlayerID.One));
         moveVelocity = moveInput * moveSpeed;
 	}
 
