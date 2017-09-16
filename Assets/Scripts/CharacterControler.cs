@@ -17,7 +17,7 @@ public class CharacterControler : MonoBehaviour {
 
     public Transform rangedAttack;
     public float reloadTime;
-    public bool fireTrigger;
+    public float fireTrigger;
 
     // Use this for initialization
     void Start () {
@@ -49,11 +49,12 @@ public class CharacterControler : MonoBehaviour {
     void Shooting ()
     {
     
-        fireTrigger = InputManager.GetButtonDown("Right Trigger", player);
-        if (fireTrigger)
+        fireTrigger = InputManager.GetAxis("Right Trigger", player);
+        if (fireTrigger > 0)
         {
 
             Instantiate(rangedAttack, transform.position, rangedAttack.rotation);
+            Debug.Log("TEST");
 
         }
 

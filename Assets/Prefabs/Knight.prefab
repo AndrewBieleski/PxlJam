@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212070578983206518}
   - component: {fileID: 61547762005753884}
   - component: {fileID: 50064049474281582}
-  - component: {fileID: 114101875309934386}
   - component: {fileID: 114230797245857286}
   m_Layer: 0
   m_Name: Knight
@@ -89,17 +88,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.13, y: 0.13}
   m_EdgeRadius: 0
---- !u!114 &114101875309934386
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1168344047121118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac1354e93155e7440a31a61e8f32b66d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114230797245857286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,7 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a6918f4107f074fbea801bdbb4ad4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: 0
   moveSpeed: 10
+  rangedAttack: {fileID: 4947331026451138, guid: 66e19777494f81c4987742582811cba7,
+    type: 2}
+  reloadTime: 0
+  fireTrigger: 0
 --- !u!212 &212070578983206518
 SpriteRenderer:
   m_ObjectHideFlags: 1
