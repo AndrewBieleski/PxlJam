@@ -18,6 +18,9 @@ public class CharacterControler : MonoBehaviour {
     public Transform rangedAttack;
     public float reloadTime;
     public float fireTrigger;
+    public bool canShoot = true;
+    public float shootDelay = .2f;
+    public float shootSpeed = 7.0f;
 
     // Use this for initialization
     void Start () {
@@ -50,14 +53,21 @@ public class CharacterControler : MonoBehaviour {
     {
     
         fireTrigger = InputManager.GetAxis("Right Trigger", player);
-        if (fireTrigger > 0)
+        if (fireTrigger > 0 && canShoot)
         {
+            Quaternion rotationOnCreation = Quaternion.Euler(0, 0, -90);
+            Transform boltInstance = Instantiate(rangedAttack, transform.position, transform.rotation * rotationOnCreation);
+            boltInstance.GetComponent<Rigidbody2D>().AddForce(orientInput * shootSpeed, ForceMode2D.Impulse);
+            canShoot = false;
+            Invoke("ShootDelay", shootDelay);
 
-            Instantiate(rangedAttack, transform.position, rangedAttack.rotation);
-            Debug.Log("TEST");
 
         }
 
+    }
+    void ShootDelay()
+    {
+        canShoot = true;
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
